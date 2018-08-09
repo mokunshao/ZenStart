@@ -63,11 +63,11 @@ while(index<keys["length"]){ // 0 1 2
         if(hash[row[index2]]){
             icon.src = "http://www."+hash[row[index2]]+"/favicon.ico"
         }else{
-            icon.src = "1.png"
+            icon.src = "blank.png"
         }
 
         icon.onerror = function(xxx){
-            xxx.target.src = "1.png"
+            xxx.target.src = "blank.png"
         }
 
         // 用户更改网址
