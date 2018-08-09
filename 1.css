@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    color:white;
+    display: inline-flex;
+    width: 70px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+body{
+    background: grey url(https://res.wx.qq.com/a/wx_fed/webwx/res/static/img/2zrdI1g.jpg) center center no-repeat;
+    background-size: cover;
+    min-width: 960px;
+}
+
+.logo{
+    position: absolute;
+    left: 25px;
+    top: 20px;
+    font-size: 25px;
+    font-weight: bolder;
+    color: #333;
+}
+
+main{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.wrapper{
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow:rgb(0, 0, 0) 0px 2px 10px 0px;
+
+}
+
+kbd{
+    /* width: 70px;
+    height: 60px; */
+    display: inline-flex;
+    /* align-items: center;
+    justify-content: center;
+    text-transform: uppercase; */
+    position: relative;
+    background: linear-gradient(to bottom, #292929 0%,#111111 100%);
+   	color: #c5c5c5;
+	border: 1px solid #373737;
+	border-radius: 7px;
+    box-shadow: 0 0 0 1px #1a1b1c,0 0 0 2px #1f2020, 0 3px 0 2px black;
+    margin:0 10px;
+    font-size: 16px;
+    font-family: helvetica;
+    cursor: pointer;
+}
+
+button{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: none;
+    border-radius: 5px;
+}
+
+kbd:hover button{
+    display: inline-block;
+}
+
+kbd:active {
+    top: 2px;
+}
+.row{
+    margin: 20px;
+}
+
+.row:nth-child(2){
+    margin-left: -22px;
+}
+
+.row:nth-child(3){
+    margin-left: -80px;
+}
+
+img{
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    left: 3px;
+    bottom: 3px;
+    border-radius: 50%;
+}
