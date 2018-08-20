@@ -1,5 +1,3 @@
-// todo:以后尝试用 onclick 代替 a 元素
-
 // 初始化数据
 var keys = {
     '0': {0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
@@ -14,7 +12,7 @@ var hash = {
     'e': 'ele.me', 
     'r': 'people.com.cn', 
     't': 'taobao.com', 
-    'y': 'youtube.com', 
+    'y': 'yy.com', 
     'u': 'uc.cn', 
     'i': 'iqiyi.com', 
     'o': 'oppo.com', 
@@ -23,7 +21,7 @@ var hash = {
     's': 'sina.com.cn',
     'd': 'douyu.com',
     'f': 'www.ifeng.com',
-    'g': 'google.com',
+    'g': 'google.cn',
     'h': 'hupu.com',
     'j': 'www.jd.com',
     'k': 'kuaishou.com',
@@ -45,12 +43,10 @@ if(hashInLocalStorage){
 
 // 生成键盘
 for(var index = 0; index<keys["length"]; index++){
-
     // 创建三个 class="row" 的 div
     var div = document.createElement("div");
     div.className = "row"
     main.appendChild(div);
-
     var row = keys[index]; // 第一个数组 第二个数组 第三个数组
     
     for(var index2 = 0; index2 < row["length"]; index2++){ //0~10 0~9 0~7
@@ -59,15 +55,10 @@ for(var index = 0; index<keys["length"]; index++){
         var kbd = document.createElement("kbd"); 
         div.appendChild(kbd);
 
-        //kbd 里的超链接
-        var link = document.createElement("a");
-        link.href = ("http://"+hash[row[index2]])
-        link.setAttribute("target","_blank")
-        link.textContent = row[index2]
-        kbd.appendChild(link)
-
-        // 当鼠标浮在 kbd 上时显示域名
-        kbd.setAttribute("title",hash[row[index2]])
+        // 创建 span
+        var span = document.createElement('span')
+        kbd.appendChild(span);
+        span.textContent =row[index2]
 
         // 添加 button
         var button = document.createElement("button");
@@ -93,13 +84,33 @@ for(var index = 0; index<keys["length"]; index++){
             var key = button2.id
             var icon2 = button2.nextSibling
             var customDomain = prompt("给我一个网址")
-            hash[key] = customDomain
-            icon2.src = "http://"+ customDomain +"/favicon.ico"
-            icon2.onerror = function(failure){
-                failure.target.src = "blank.png"
+            if(customDomain !== null){
+                hash[key] = customDomain
+                icon2.src = "http://"+ customDomain +"/favicon.ico"
+                icon2.onerror = function(failure){
+                    failure.target.src = "blank.png"
+                }
+                localStorage.setItem('zzz',JSON.stringify(hash))
             }
-            localStorage.setItem('zzz',JSON.stringify(hash))
         }
+
+        //点击时打开网页
+        span.onclick = function(hi){
+            var cha = hi['path'][0]['innerHTML'];
+            var site = hash[cha];
+            var a = document.createElement('a');
+            a.href = 'http://'+site;
+            a.target = "_blank";
+            a.click();
+        }
+
+        // 当鼠标浮在 kbd 上时显示域名
+        kbd.onmouseover = function(hi){
+            var cha = hi['path'][0]['innerHTML'];
+            var site = hash[cha];
+            hi['path'][1]['title'] = site;
+        }
+
     }
 }
 
